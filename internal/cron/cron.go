@@ -224,7 +224,7 @@ func (s Schedule) Next(from time.Time) (time.Time, error) {
 			continue
 		}
 		if !s.hour.match(t.Hour()) {
-			t = t.Add(1 * time.Hour)
+			t = time.Date(t.Year(), t.Month(), t.Day(), t.Hour(), 0, 0, 0, loc).Add(1 * time.Hour)
 			continue
 		}
 		if !s.minute.match(t.Minute()) {
